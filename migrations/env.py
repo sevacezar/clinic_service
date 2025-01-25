@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../c
 
 from config import DB_HOST, DB_PASS, DB_PORT, DB_USER, DB_NAME
 from patients.models import Base
+from auth.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
