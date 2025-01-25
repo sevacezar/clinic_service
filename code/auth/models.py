@@ -14,7 +14,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(unique=True)
     password_hashed: Mapped[str]
-    role_id: Mapped[int] = mapped_column(ForeignKey('roles.id'))
+    role_id: Mapped[int] = mapped_column(ForeignKey('roles.id'), nullable=True)
 
     role = relationship('Role', back_populates='users')
 
