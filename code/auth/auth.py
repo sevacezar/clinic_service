@@ -27,4 +27,3 @@ def create_access_token(
     expire = datetime.now(timezone=timezone.utc) + expires_delta
     to_encode.update({'exp': expire})
     return jwt.encode(to_encode, JWT_SECRET, JWT_ALGORITHM)
-
