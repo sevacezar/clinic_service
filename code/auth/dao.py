@@ -15,3 +15,12 @@ class UsersDAO:
         query = select(User).where(User.username == username).options(selectinload(User.role))
         res = await session.execute(query)
         return res.scalar_one_or_none()
+
+    async def get_user_by_id(
+            session: AsyncSession,
+            id: int,
+        ) -> User | None:
+        """Get user by id"""
+        query = select(User).where(User.id == id).options(selectinload(User.role))
+        res = await session.execute(query)
+        return res.scalar_one_or_none()

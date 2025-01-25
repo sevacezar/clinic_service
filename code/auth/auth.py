@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta, timezone
 
-from jose import jwt, JWTError
+from jose import jwt
 from passlib.context import CryptContext
 
 from config import JWT_SECRET, JWT_ALGORITHM, EXPIRES_DELTA_DAYS
