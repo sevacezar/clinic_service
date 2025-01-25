@@ -2,6 +2,7 @@
 
 from fastapi import FastAPI
 
+from auth.router import router as auth_router
 from patients.router import router as patients_router
 
 
@@ -11,3 +12,4 @@ app: FastAPI = FastAPI(
 )
 
 app.include_router(patients_router)
+app.include_router(auth_router)

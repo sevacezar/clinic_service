@@ -8,7 +8,7 @@ from passlib.context import CryptContext
 from config import JWT_SECRET, JWT_ALGORITHM, EXPIRES_DELTA_DAYS
 
 
-pwd_context = CryptContext(schemes=['bcypt'], deprecated='auto')
+pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 def get_password_hash(password: str) -> str:
     """Get hash of password"""
@@ -24,6 +24,6 @@ def create_access_token(
     ) -> str:
     """Create JWT-token"""
     to_encode: dict = data.copy()
-    expire = datetime.now(timezone=timezone.utc) + expires_delta
+    expire = datetime.now(tz=timezone.utc) + expires_delta
     to_encode.update({'exp': expire})
     return jwt.encode(to_encode, JWT_SECRET, JWT_ALGORITHM)
