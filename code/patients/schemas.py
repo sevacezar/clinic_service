@@ -5,19 +5,12 @@ from datetime import date, datetime
 from pydantic import BaseModel
 
 
-class DiagnosisPydanticOut(BaseModel):
-    name: str
-
-
 class PatientPydanticOut(BaseModel):
+    """Output Patient scheme"""
     id: int
     date_of_birth: date
-    diagnoses: list[DiagnosisPydanticOut] = []
+    diagnoses: list[str] = []
     created_at: datetime
 
     class Config:
         orm_mode = True
-
-
-class PatientsPydanticOut(BaseModel):
-    patients: list[PatientPydanticOut] = []
