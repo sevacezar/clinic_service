@@ -35,10 +35,12 @@ app.dependency_overrides[get_session] = override_get_session
 async def setup_database():
     """Fixture of database setup."""
     async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
     yield
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
+    await engine.dispose()
 
 
 @pytest.fixture(scope='function')
