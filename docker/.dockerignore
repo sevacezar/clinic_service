@@ -1,0 +1,14 @@
+.git
+.gitignore
+
+__pycache__/
+*.pyc
+
+.venv/
+.vscode/
+.pytest_cache/
+
+tests/
+docker/
+pytest.ini
+*.md

@@ -14,5 +14,25 @@ services:
     networks:
       - app-network
 
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - app-network
+    # sleep для подготовки БД, без него алембик не накатывает миграцию
+    command: >
+      sh -c "
+      ./wait-for-it.sh db:5432 --
+      alembic upgrade head &&
+      cd /app/code &&
+      uvicorn main:app --host 0.0.0.0 --port 8000
+      "
+
 networks:
   app-network:
