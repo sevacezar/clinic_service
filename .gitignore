@@ -3,7 +3,6 @@
 .venv
 .env
 .db
-*.md
 *.pyc
 htmlcov
 .coverage

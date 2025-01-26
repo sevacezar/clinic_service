@@ -25,7 +25,6 @@ services:
       - db
     networks:
       - app-network
-    # sleep для подготовки БД, без него алембик не накатывает миграцию
     command: >
       sh -c "
       ./wait-for-it.sh db:5432 --
