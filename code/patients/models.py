@@ -11,6 +11,7 @@ from sqlalchemy.sql import func
 from database import Base
 
 
+# Table of relationship between patient and diagnosis
 patient_diagnosis_association = Table(
     'patient_diagnosis',
     Base.metadata,
@@ -30,6 +31,7 @@ patient_diagnosis_association = Table(
 
 
 class Patient(Base):
+    """Patient ORM model."""
     __tablename__ = 'patients'
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -59,6 +61,7 @@ class Patient(Base):
 
 
 class Diagnosis(Base):
+    """Diagnosis ORM model."""
     __tablename__ = 'diagnoses'
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -72,6 +75,3 @@ class Diagnosis(Base):
 
     def __repr__(self) -> str:
         return f'<Diagnosis {self.name}>'
-    
-
-
